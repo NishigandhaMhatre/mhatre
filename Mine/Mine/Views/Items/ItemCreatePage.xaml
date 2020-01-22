@@ -19,16 +19,22 @@
             <Label Text="Description" FontSize="Medium" />
             <Editor Text="{Binding Data.Description}" d:Text="Item description" FontSize="Small" Margin="0" />
             <Label Text="Value" FontSize="Medium"/>
-            <Stepper
+            <StackLayout
+                Orientation="Horizontal">
+                
+                <Stepper
                 Value="{Binding Data.Value, Mode=TwoWay}"
                 Minimum="0"
                 Maximum="10"
                 ValueChanged="Value_OnStepperValueChanged"
                 Increment="1"/>
-            <Label
+                
+                <Label
                 x:Name="ValueValue"
                 Text="{Binding Data.Value}" 
                 FontSize="Medium"/>
+                
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
     
