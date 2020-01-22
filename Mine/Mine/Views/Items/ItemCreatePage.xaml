@@ -23,8 +23,12 @@
                 Value="{Binding Data.Value, Mode=TwoWay}"
                 Minimum="0"
                 Maximum="10"
+                ValueChanged="Value_OnStepperValueChanged"
                 Increment="1"/>
-            <Label Text="{Binding Data.Value}" FontSize="Medium"/>
+            <Label
+                x:Name="ValueValue"
+                Text="{Binding Data.Value}" 
+                FontSize="Medium"/>
         </StackLayout>
     </ContentPage.Content>
     
