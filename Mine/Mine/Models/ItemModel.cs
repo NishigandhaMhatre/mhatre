@@ -6,5 +6,6 @@
     public class ItemModel : BaseModel
     {
         // Add Unique attributes for Item
+        public int Value { get; set; } = 0;
     }
 }
