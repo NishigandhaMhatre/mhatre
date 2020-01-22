@@ -24,6 +24,7 @@
                 Minimum="0"
                 Maximum="10"
                 Increment="1"/>
+            <Label Text="{Binding Data.Value}" FontSize="Medium"/>
         </StackLayout>
     </ContentPage.Content>
     
