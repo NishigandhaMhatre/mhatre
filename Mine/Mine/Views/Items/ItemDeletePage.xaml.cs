@@ -34,10 +34,11 @@ namespace Mine.Views
         async void Delete_Clicked(object sender, EventArgs e)
         {
             MessagingCenter.Send(this, "Delete", viewModel.Data);
-
-            Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
-
-            await Navigation.PopAsync();
+           //Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count-2]);
+        
+            await Navigation.PopModalAsync();
+           // await Navigation.PopAsync();
+        
         }
 
         /// <summary>
@@ -49,7 +50,8 @@ namespace Mine.Views
         {
             Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
 
-            await Navigation.PopAsync();
+            await Navigation.PopModalAsync();
+          
         }
     }
 }
