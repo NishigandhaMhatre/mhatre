@@ -47,7 +47,7 @@ namespace Mine.Views
         async void Cancel_Clicked(object sender, EventArgs e)
         {
            
-            await Navigation.PopAsync();
+            await Navigation.PopModalAsync();
         }
 
         void Value_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
