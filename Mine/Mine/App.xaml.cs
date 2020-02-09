@@ -12,6 +12,7 @@ namespace Mine
         /// <summary>
         /// Default App Constructor
         /// </summary>
+        static DatabaseService database;
         public App()
         {
             InitializeComponent();
@@ -20,6 +21,18 @@ namespace Mine
 
             // Call the Main Page to open
             MainPage = new MainPage();
+        }
+
+        public static DatabaseService Database
+        {
+            get
+            {
+                if (database == null)
+                {
+                    database = new DatabaseService();
+                }
+                return database;
+            }
         }
 
         /// <summary>
