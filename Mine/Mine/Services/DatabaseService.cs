@@ -49,5 +49,10 @@ namespace Mine.Services
         {
             return Database.UpdateAsync(item);
         }
+
+        public Task<int> DeleteAsync(ItemModel item)
+        {
+            return Database.DeleteAsync(item);
+        }
     }
 }
