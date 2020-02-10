@@ -50,9 +50,15 @@ namespace Mine.Services
             return Database.UpdateAsync(item);
         }
 
-        public Task<int> DeleteAsync(ItemModel item)
+        public async Task<bool> DeleteAsync(String id)
         {
-            return Database.DeleteAsync(item);
+            var item = await ReadAsync(id);
+            if (item == null)
+            {
+                return false;
+            }
+            var result = Database.DeleteAsync(item);
+            return true;
         }
 
         public Task<List<ItemModel>> IndexAsync()
