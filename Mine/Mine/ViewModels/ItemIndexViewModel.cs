@@ -70,13 +70,13 @@ namespace Mine.ViewModels
         /// <returns></returns>
         public async Task<bool> Add(ItemModel data)
         {
+            Dataset.Add(data);
             if (usingDatabase == true)
             {
                 await App.Database.CreateAsync(data);
             }
             if (usingStore == true)
             {
-                Dataset.Add(data);
                 var result = await DataStore.CreateAsync(data);
             }
             return true;
