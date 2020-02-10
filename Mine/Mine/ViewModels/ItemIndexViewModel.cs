@@ -29,8 +29,7 @@ namespace Mine.ViewModels
 
         private bool _needsRefresh;
 
-        public bool usingDatabase = true;
-        public bool usingStore = false;
+
 
         /// <summary>
         /// Constructor
@@ -71,14 +70,9 @@ namespace Mine.ViewModels
         public async Task<bool> Add(ItemModel data)
         {
             Dataset.Add(data);
-            if (usingDatabase == true)
-            {
-                await App.Database.CreateAsync(data);
-            }
-            if (usingStore == true)
-            {
-                var result = await DataStore.CreateAsync(data);
-            }
+        
+            var result = await DataStore.CreateAsync(data);
+            
             return true;
         }
 
@@ -96,15 +90,7 @@ namespace Mine.ViewModels
                 return false;
             }
             Dataset.Remove(data);
-            if (usingStore == true)
-            {
-                result = await DataStore.DeleteAsync(data.Id);
-            }
-            if (usingDatabase == true)
-            {
-                result = await App.Database.DeleteAsync(data.Id);
-            }
-
+            result = await DataStore.DeleteAsync(data.Id);
             return result;
         }
 
@@ -117,14 +103,7 @@ namespace Mine.ViewModels
         public async Task<ItemModel> Read(string id)
         {
             ItemModel result = null;
-            if (usingDatabase == true)
-            {
-                result = await App.Database.ReadAsync(id);
-            }
-            if (usingStore == true)
-            {
-                result = await DataStore.ReadAsync(id);
-            }
+            result = await DataStore.ReadAsync(id);
             return result;
         }
 
@@ -142,15 +121,7 @@ namespace Mine.ViewModels
                 return false;
             }
             record.Update(data);
-            if (usingStore == true)
-            {
-                result = await DataStore.UpdateAsync(record);
-            }
-            if (usingDatabase == true)
-            {
-                result = await App.Database.UpdateAsync(record);
-            }
-
+            result = await DataStore.UpdateAsync(record);
             await ExecuteLoadDataCommand();
 
             return result;
