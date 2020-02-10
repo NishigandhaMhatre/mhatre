@@ -136,12 +136,21 @@ namespace Mine.ViewModels
         public async Task<bool> Update(ItemModel data)
         {
             var record = await Read(data.Id);
+            bool result = false;
             if (record == null)
             {
                 return false;
             }
             record.Update(data);
-            var result = await DataStore.UpdateAsync(record);
+            if (usingStore == true)
+            {
+                result = await DataStore.UpdateAsync(record);
+            }
+            if (usingDatabase == true)
+            {
+                result = await App.Database.UpdateAsync(record);
+            }
+
             await ExecuteLoadDataCommand();
 
             return result;
