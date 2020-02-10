@@ -90,12 +90,20 @@ namespace Mine.ViewModels
         public async Task<bool> Delete(ItemModel data)
         {
             var record = await Read(data.Id);
+            var result = false;
             if (record == null)
             {
                 return false;
             }
-            Dataset.Remove(data);
-            var result = await DataStore.DeleteAsync(data.Id);
+            if (usingStore == true)
+            {
+                Dataset.Remove(data);
+                result = await DataStore.DeleteAsync(data.Id);
+            }
+            if (usingDatabase == true)
+            {
+                result = await App.Database.DeleteAsync(data.Id);
+            }
 
             return result;
         }
