@@ -95,9 +95,9 @@ namespace Mine.ViewModels
             {
                 return false;
             }
+            Dataset.Remove(data);
             if (usingStore == true)
             {
-                Dataset.Remove(data);
                 result = await DataStore.DeleteAsync(data.Id);
             }
             if (usingDatabase == true)
