@@ -8,7 +8,7 @@ using Mine.Models;
 
 namespace Mine.Services
 {
-    public class DatabaseService
+    public class DatabaseService: IDataStore<ItemModel>
     {
         static readonly Lazy<SQLiteAsyncConnection> lazyInitializer = new Lazy<SQLiteAsyncConnection>(() =>
         {
@@ -35,9 +35,10 @@ namespace Mine.Services
             }
         }
 
-        public async Task<int> CreateAsync(ItemModel item)
+        public async Task<bool> CreateAsync(ItemModel item)
         {
-            return await Database.InsertAsync(item);
+            await Database.InsertAsync(item);
+            return await Task.FromResult(true);
         }
 
         public async Task<ItemModel> ReadAsync(String id)
@@ -67,7 +68,7 @@ namespace Mine.Services
             return true;
         }
 
-        public async Task<List<ItemModel>> IndexAsync()
+        public async Task<IEnumerable<ItemModel>> IndexAsync(bool forceRefresh = false)
         {
             return await Database.Table<ItemModel>().ToListAsync();
         }
