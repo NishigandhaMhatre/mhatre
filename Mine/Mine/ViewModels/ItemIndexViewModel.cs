@@ -172,8 +172,8 @@ namespace Mine.ViewModels
             try
             {
                 Dataset.Clear();
-                var dataset = await DataStore.IndexAsync(true);
-
+                //var dataset = await DataStore.IndexAsync(true);
+                var dataset = await App.Database.IndexAsync();
                 // Example of how to sort the database output using a linq query.
                 // Sort the list
                 dataset = dataset
