@@ -1,6 +1,7 @@
 ﻿using Xamarin.Forms;
 using Mine.Services;
 using Mine.Views;
+using Mine.ViewModels;
 
 namespace Mine
 {
@@ -17,8 +18,7 @@ namespace Mine
         {
             InitializeComponent();
 
-            //DependencyService.Register<MockDataStore>();
-            //DependencyService.Register<DatabaseService>();
+            ItemIndexViewModel.Instance.GetCurrentDataSource();
             // Call the Main Page to open
             MainPage = new MainPage();
         }
