@@ -28,15 +28,14 @@ namespace Mine.Views
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new ItemIndexViewModel();
+            BindingContext = viewModel = ItemIndexViewModel.Instance;
         }
-
-        /// <summary>
-        /// The row selected from the list
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="args"></param>
-        async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+            /// <summary>
+            /// The row selected from the list
+            /// </summary>
+            /// <param name="sender"></param>
+            /// <param name="args"></param>
+            async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
             ItemModel item = args.SelectedItem as ItemModel;
             if (item == null)
