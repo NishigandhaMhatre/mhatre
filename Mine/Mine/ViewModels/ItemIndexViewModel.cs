@@ -101,6 +101,13 @@ namespace Mine.ViewModels
                 SetDataSource(data);
             });
 
+            // Wipe database
+            MessagingCenter.Subscribe<AboutPage, bool>(this, "WipeDataList", (obj, data) =>
+            {
+                WipeDataList();
+            });
+
+
         }
 
         /// <summary>
