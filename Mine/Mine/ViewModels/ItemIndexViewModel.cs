@@ -54,6 +54,8 @@ namespace Mine.ViewModels
         public IDataStore<ItemModel> DataSource_SQL => new DatabaseService();
         public IDataStore<ItemModel> DataStore;
 
+        public int CurrentDataSource { get; private set; }
+
 
         // Command to force a Load of data
         public Command LoadDatasetCommand { get; set; }
@@ -238,12 +240,14 @@ namespace Mine.ViewModels
             if (isSQL == 1)
             {
                 DataStore = DataSource_SQL;
+                CurrentDataSource = 1;
             }
             else
             {
                 DataStore = DataSource_Mock;
+                CurrentDataSource = 0;
             }
-
+            SetNeedsRefresh(true);
             return true;
         }
 
