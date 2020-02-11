@@ -35,5 +35,16 @@ namespace Mine.Views
             }
         }
 
+        async void WipeDataList_Clicked(object sender, EventArgs e)
+        {
+            bool answer = await DisplayAlert("Delete Data", "Are you sure you want to delete all data?", "Yes", "No");
+
+            if (answer)
+            {
+                MessagingCenter.Send(this, "WipeDataList", true);
+            }
+        }
+
+
     }
 }

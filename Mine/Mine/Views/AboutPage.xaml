@@ -33,33 +33,54 @@
             </StackLayout>
         </StackLayout>
         <ScrollView Grid.Row="1">
-            <StackLayout Orientation="Vertical" Padding="16,40,16,40" Spacing="10">
+            <StackLayout Orientation="Vertical" Padding="16,40,16,20" Spacing="10">
                 <Label Text="CPSC 5250 WQ20"></Label>
                 <Label Text="Nishigandha Mhatre"></Label>
                 <Label x:Name="CurrentDateTime"></Label>
             </StackLayout>
         </ScrollView>
         <ScrollView Grid.Row="2">
-            <StackLayout 
+            <StackLayout Orientation="Vertical">
+                <StackLayout 
                 Orientation="Horizontal" 
                 VerticalOptions="Center"
-                Padding="50,0,0,0"
+                Padding="20,0,0,0"
                 >
 
-                <Label 
+                    <Label 
                     HorizontalOptions="Start" 
                     VerticalOptions="Center"
                     Text="SQL Data Source" 
                     />
 
-                <Switch
+                    <Switch
                     HorizontalOptions="Start" 
                     VerticalOptions="Center"
                     x:Name="DataSourceValue"
                     IsToggled="{Binding ItemIndexViewModel.Instance.CurrentDataSource}"
 	                Toggled="DataSource_Toggled" 
                     />
+                </StackLayout>
+                <StackLayout 
+                    Orientation="Horizontal" 
+                    VerticalOptions="Center"
+                    Padding="20,0,0,0"
+                    >
 
+                    <Label 
+                    HorizontalOptions="Start" 
+                    VerticalOptions="Center"
+                    Text="Wipe Data List" 
+                    />
+
+                    <Button
+                    HorizontalOptions="Start" 
+                    VerticalOptions="Center"
+                    Text="Wipe"
+                    Clicked="WipeDataList_Clicked"
+                    />
+
+                </StackLayout>
             </StackLayout>
         </ScrollView>
 
