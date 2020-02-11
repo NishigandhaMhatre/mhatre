@@ -251,5 +251,13 @@ namespace Mine.ViewModels
             return true;
         }
 
+        /// <summary>
+        /// Returns the current data source
+        /// </summary>
+        public int GetCurrentDataSource()
+        {
+            return CurrentDataSource;
+        }
+
     }
 }
