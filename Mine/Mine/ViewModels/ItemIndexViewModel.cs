@@ -258,6 +258,15 @@ namespace Mine.ViewModels
         {
             return CurrentDataSource;
         }
+        /// <summary>
+        /// Method to WipeDataList
+        /// </summary>
+        public void WipeDataList()
+        {
+            DataStore.WipeDataList();
+            SetNeedsRefresh(true);
+        }
+
 
     }
 }
