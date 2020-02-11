@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mine.Services;
+using System;
 using System.ComponentModel;
 using Xamarin.Forms;
 
@@ -21,15 +22,16 @@ namespace Mine.Views
             CurrentDateTime.Text = System.DateTime.Now.ToString("MM/dd/yy hh:mm:ss");
         }
 
-        async void DataSource_Toggled(object sender, EventArgs e)
+        void DataSource_Toggled(object sender, EventArgs e)
         {
+            // Flip the settings
             if (DataSourceValue.IsToggled == true)
             {
-
+                MessagingCenter.Send(this, "SetDataSource", 1);
             }
             else
             {
-
+                MessagingCenter.Send(this, "SetDataSource", 0);
             }
         }
 
