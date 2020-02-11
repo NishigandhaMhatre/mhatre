@@ -92,6 +92,13 @@ namespace Mine.ViewModels
             {
                 await Delete(data as ItemModel);
             });
+
+            // Register the Set Data Source Message
+            MessagingCenter.Subscribe<AboutPage, int>(this, "SetDataSource", (obj, data) =>
+            {
+                SetDataSource(data);
+            });
+
         }
 
         /// <summary>
