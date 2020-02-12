@@ -17,6 +17,9 @@ namespace Mine
             // enable multi-threaded database access
             SQLite.SQLiteOpenFlags.SharedCache;
 
+        /// <summary>
+        /// Returns DBpath
+        /// </summary>
         public static string DatabasePath
         {
             get
